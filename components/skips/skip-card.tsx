@@ -35,7 +35,7 @@ export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
     >
       <CardHeader className='pb-2'>
         <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-bold'>{skip.size} yd³ Skip</h3>
+          <h3 className='text-lg font-bold'>{skip.size} Yard Skip</h3>
           <Badge variant={!skip.forbidden ? 'default' : 'destructive'}>
             {!skip.forbidden ? 'Available' : 'Unavailable'}
           </Badge>
@@ -66,7 +66,9 @@ export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
       </CardContent>
       <CardFooter className='flex flex-col gap-2'>
         <div className='flex w-full justify-between'>
-          <span className='text-muted-foreground text-sm'>Price</span>
+          <span className='text-muted-foreground text-sm'>
+            Price (Exc. VAT)
+          </span>
           <span className='font-bold'>
             {formatCurrency(skip.price_before_vat)}
           </span>

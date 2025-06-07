@@ -11,11 +11,19 @@ interface SkipListItemProps {
 }
 
 export const SkipListItem: React.FC<SkipListItemProps> = ({ skip }) => {
-  const { selectedSkip } = useSkips();
+  const { selectedSkip, toggleSkipSelection } = useSkips();
   return (
     <div
+      onClick={() => {
+        if (skip.forbidden) return;
+        if (selectedSkip?.id === skip.id) {
+          toggleSkipSelection(null);
+        } else {
+          toggleSkipSelection(skip);
+        }
+      }}
       className={cn(
-        'flex flex-col gap-4 rounded-lg border p-4 md:flex-row md:items-center',
+        'flex cursor-pointer flex-col gap-4 rounded-lg border p-4 transition-shadow hover:shadow-lg md:flex-row md:items-center',
         selectedSkip === skip && 'border-primary border-1',
       )}
     >
@@ -25,7 +33,7 @@ export const SkipListItem: React.FC<SkipListItemProps> = ({ skip }) => {
 
       <div className='flex-grow space-y-2'>
         <div className='flex flex-col gap-2 md:flex-row md:items-center md:justify-between'>
-          <h3 className='font-bold'>{skip.size} yd³ Skip</h3>
+          <h3 className='font-bold'>{skip.size} Yard Skip</h3>
           <Badge variant={!skip.forbidden ? 'default' : 'destructive'}>
             {!skip.forbidden ? 'Available' : 'Unavailable'}
           </Badge>
@@ -54,7 +62,9 @@ export const SkipListItem: React.FC<SkipListItemProps> = ({ skip }) => {
 
       <div className='gap-2 md:flex md:flex-col md:items-end md:text-right'>
         <div className='flex justify-between md:flex-col md:items-end'>
-          <span className='text-muted-foreground text-sm'>Price</span>
+          <span className='text-muted-foreground text-sm'>
+            Price (Exc. VAT)
+          </span>
           <span className='font-bold'>
             {formatCurrency(skip.price_before_vat)}
           </span>
