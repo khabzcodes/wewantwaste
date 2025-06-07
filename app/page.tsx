@@ -11,16 +11,16 @@ import { SkipSummaryDrawer } from '@/components/skips/skip-summary-drawer';
 const SkipsContent = () => {
   const { filteredSkips, viewMode } = useSkips();
   return (
-    <div className='mx-auto w-full max-w-6xl py-10'>
+    <div className='mx-auto w-full max-w-6xl px-3 py-10'>
       <Stepper steps={stepsConfig} />
-      <div className='flex items-center justify-between'>
+      <div className='mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
         <div className='flex flex-col'>
           <h1 className='text-2xl font-bold'>Choose Your Skip Size</h1>
           <p className='text-muted-foreground text-sm'>
             Select the skip size that best suits your needs
           </p>
         </div>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 pr-4'>
           <ViewMode />
           <FilterSkips />
         </div>
