@@ -6,18 +6,18 @@ import {
   CardFooter,
   CardHeader,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
 import { cn, formatCurrency } from '@/lib/utils';
 import { useSkips } from '@/context/skips-context';
+import { SelectionButton } from '@/components/skips/selection-button';
 
 interface SkipCardProps {
   skip: ISkip;
 }
 
 export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
-  const { selectedSkip, toggleSkipSelection } = useSkips();
+  const { selectedSkip } = useSkips();
   return (
     <Card
       className={cn(
@@ -63,13 +63,7 @@ export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
             {formatCurrency(skip.price_before_vat)}
           </span>
         </div>
-        <Button
-          className='w-full'
-          disabled={skip.forbidden}
-          onClick={() => toggleSkipSelection(skip)}
-        >
-          Select Skip
-        </Button>
+        <SelectionButton skip={skip} />
       </CardFooter>
     </Card>
   );

@@ -1,17 +1,24 @@
 import React from 'react';
 import { ISkip } from '@/types/skips';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
-import { formatCurrency } from '@/lib/utils';
+import { cn, formatCurrency } from '@/lib/utils';
+import { SelectionButton } from '@/components/skips/selection-button';
+import { useSkips } from '@/context/skips-context';
 
 interface SkipListItemProps {
   skip: ISkip;
 }
 
 export const SkipListItem: React.FC<SkipListItemProps> = ({ skip }) => {
+  const { selectedSkip } = useSkips();
   return (
-    <div className='flex flex-col gap-4 rounded-lg border p-4 md:flex-row md:items-center'>
+    <div
+      className={cn(
+        'flex flex-col gap-4 rounded-lg border p-4 md:flex-row md:items-center',
+        selectedSkip === skip && 'border-primary border-1',
+      )}
+    >
       <div className='bg-muted flex shrink-0 items-center justify-center rounded-md md:h-24 md:w-32'>
         <span className='text-muted-foreground text-xs'>Image Placeholder</span>
       </div>
@@ -52,9 +59,7 @@ export const SkipListItem: React.FC<SkipListItemProps> = ({ skip }) => {
             {formatCurrency(skip.price_before_vat)}
           </span>
         </div>
-        <Button className='w-full md:w-auto' disabled={skip.forbidden}>
-          Select Skip
-        </Button>
+        <SelectionButton skip={skip} className='md:w-auto' />
       </div>
     </div>
   );
