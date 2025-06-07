@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
+import RootProviders from '@/components/providers';
+import React from 'react';
+import ThemeToggler from '@/components/theme/togger';
 
 const geistSans = Space_Mono({
   variable: '--font-geist-sans',
@@ -19,11 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body
         className={`${geistSans.className} bg-background min-h-screen overflow-hidden antialiased`}
       >
-        {children}
+        <RootProviders>
+          <div className='fixed top-4 right-4 z-50'>
+            <ThemeToggler />
+          </div>
+          {children}
+        </RootProviders>
       </body>
     </html>
   );
