@@ -4,6 +4,7 @@ import { SkipCard } from './skip-card';
 import { SkipListItem } from './skip-list-item';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { EmptyPlaceholder } from '@/components/empty-placeholder';
 
 interface SkipsListProps {
   skips: ISkip[];
@@ -13,6 +14,19 @@ interface SkipsListProps {
 export const SkipsLayout: React.FC<SkipsListProps> = ({ skips, viewMode }) => {
   return (
     <ScrollArea className='mt-6 h-[calc(100vh-220px)]'>
+      {skips.length === 0 && (
+        <EmptyPlaceholder>
+          <EmptyPlaceholder.Icon
+            name='shippingTruck'
+            className='text-primary'
+          />
+          <EmptyPlaceholder.Title>No Skips Available</EmptyPlaceholder.Title>
+          <EmptyPlaceholder.Description>
+            We couldn&apos;t find any skips matching your criteria. Please try
+            adjusting your filters.
+          </EmptyPlaceholder.Description>
+        </EmptyPlaceholder>
+      )}
       <div
         className={cn(
           'pr-4',
@@ -21,20 +35,12 @@ export const SkipsLayout: React.FC<SkipsListProps> = ({ skips, viewMode }) => {
             : 'flex flex-col gap-4',
         )}
       >
-        {skips.length === 0 ? (
-          <div className='py-8 text-center'>
-            <p className='text-muted-foreground'>
-              No skips available for your selection.
-            </p>
-          </div>
-        ) : (
-          skips.map((skip) =>
-            viewMode === 'grid' ? (
-              <SkipCard key={skip.id} skip={skip} />
-            ) : (
-              <SkipListItem key={skip.id} skip={skip} />
-            ),
-          )
+        {skips.map((skip) =>
+          viewMode === 'grid' ? (
+            <SkipCard key={skip.id} skip={skip} />
+          ) : (
+            <SkipListItem key={skip.id} skip={skip} />
+          ),
         )}
       </div>
     </ScrollArea>
