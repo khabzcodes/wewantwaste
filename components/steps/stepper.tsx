@@ -8,7 +8,7 @@ type StepperProps = {
 
 export const Stepper: React.FC<StepperProps> = ({ steps }) => {
   return (
-    <div className='mx-auto w-full max-w-4xl'>
+    <div className='mx-auto w-full max-w-6xl'>
       <div className='mb-8 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center'>
         {steps.map((step, idx) => (
           <React.Fragment key={idx}>

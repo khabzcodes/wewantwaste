@@ -61,21 +61,18 @@ export const SkipsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const filteredSkips: ISkip[] = React.useMemo(() => {
     return skipsData.filter((skip) => {
+      const matchesSize =
+        selectedSizes.size === 0 || selectedSizes.has(skip.size);
+
+      if (!matchesSize) return false;
+
       const matchesFilter =
         (activeFilters.has('road-legal') && skip.allowed_on_road) ||
         (activeFilters.has('private-land') && !skip.allowed_on_road) ||
         (activeFilters.has('heavy-waste') && skip.allows_heavy_waste) ||
         (activeFilters.has('standard-waste') && !skip.allows_heavy_waste);
 
-      const matchesSize =
-        selectedSizes.size === 0 || selectedSizes.has(skip.size);
-      const hasNoFilters = activeFilters.size === 0 || activeFilters.has('all');
-
-      return (
-        hasNoFilters ||
-        matchesFilter ||
-        (activeFilters.has('all') && matchesSize)
-      );
+      return activeFilters.has('all') || matchesFilter;
     });
   }, [activeFilters, selectedSizes]);
 
