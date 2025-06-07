@@ -17,11 +17,19 @@ interface SkipCardProps {
 }
 
 export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
-  const { selectedSkip } = useSkips();
+  const { selectedSkip, toggleSkipSelection } = useSkips();
   return (
     <Card
+      onClick={() => {
+        if (skip.forbidden) return;
+        if (selectedSkip?.id === skip.id) {
+          toggleSkipSelection(null);
+        } else {
+          toggleSkipSelection(skip);
+        }
+      }}
       className={cn(
-        'flex h-full flex-col',
+        'flex h-full cursor-pointer flex-col transition-shadow hover:shadow-lg',
         selectedSkip === skip && 'border-primary border-1',
       )}
     >
