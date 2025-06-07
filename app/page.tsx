@@ -6,7 +6,7 @@ import { ViewMode } from '@/components/skips/controls/view-mode';
 import { FilterSkips } from '@/components/skips/controls/filter';
 import { SkipsLayout } from '@/components/skips/skips-layout';
 import { SkipsProvider, useSkips } from '@/context/skips-context';
-import ThemeToggler from '@/components/theme/togger';
+import { SkipSummaryDrawer } from '@/components/skips/skip-summary-drawer';
 
 const SkipsContent = () => {
   const { filteredSkips, viewMode } = useSkips();
@@ -26,6 +26,7 @@ const SkipsContent = () => {
         </div>
       </div>
       <SkipsLayout skips={filteredSkips} viewMode={viewMode} />
+      <SkipSummaryDrawer />
     </div>
   );
 };
