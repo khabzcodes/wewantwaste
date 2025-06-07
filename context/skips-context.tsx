@@ -23,6 +23,8 @@ type SkipsContextType = {
   filterCounts: FilterCounts;
   sizeCounts: Record<number, number>;
   hasActiveFilters: boolean;
+  selectedSkip: ISkip | null;
+  toggleSkipSelection: (skip: ISkip | null) => void;
 };
 
 const SkipsContext = React.createContext<SkipsContextType | undefined>(
@@ -39,6 +41,11 @@ export const SkipsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedSizes, setSelectedSizes] = React.useState<Set<number>>(
     new Set(),
   );
+  const [selectedSkip, setSelectedSkip] = React.useState<ISkip | null>(null);
+
+  const toggleSkipSelection = (skip: ISkip | null) => {
+    setSelectedSkip(skip);
+  };
 
   const filterCounts: FilterCounts = React.useMemo(() => {
     return {
@@ -119,6 +126,8 @@ export const SkipsProvider: React.FC<{ children: React.ReactNode }> = ({
         filterCounts,
         sizeCounts,
         hasActiveFilters,
+        selectedSkip,
+        toggleSkipSelection,
       }}
     >
       {children}

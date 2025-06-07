@@ -9,15 +9,22 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
-import { formatCurrency } from '@/lib/utils';
+import { cn, formatCurrency } from '@/lib/utils';
+import { useSkips } from '@/context/skips-context';
 
 interface SkipCardProps {
   skip: ISkip;
 }
 
 export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
+  const { selectedSkip, toggleSkipSelection } = useSkips();
   return (
-    <Card className='flex h-full flex-col'>
+    <Card
+      className={cn(
+        'flex h-full flex-col',
+        selectedSkip === skip && 'border-primary border-1',
+      )}
+    >
       <CardHeader className='pb-2'>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-bold'>{skip.size} yd³ Skip</h3>
@@ -56,7 +63,11 @@ export const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
             {formatCurrency(skip.price_before_vat)}
           </span>
         </div>
-        <Button className='w-full' disabled={skip.forbidden}>
+        <Button
+          className='w-full'
+          disabled={skip.forbidden}
+          onClick={() => toggleSkipSelection(skip)}
+        >
           Select Skip
         </Button>
       </CardFooter>

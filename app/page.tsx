@@ -4,7 +4,7 @@ import { stepsConfig } from '@/config/menu';
 import React from 'react';
 import { ViewMode } from '@/components/skips/controls/view-mode';
 import { FilterSkips } from '@/components/skips/controls/filter';
-import { SkipsList } from '@/components/skips/skips-list';
+import { SkipsLayout } from '@/components/skips/skips-layout';
 import { SkipsProvider, useSkips } from '@/context/skips-context';
 
 const SkipsContent = () => {
@@ -24,7 +24,7 @@ const SkipsContent = () => {
           <FilterSkips />
         </div>
       </div>
-      <SkipsList skips={filteredSkips} viewMode={viewMode} />
+      <SkipsLayout skips={filteredSkips} viewMode={viewMode} />
     </div>
   );
 };

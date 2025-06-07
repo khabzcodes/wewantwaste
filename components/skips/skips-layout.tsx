@@ -10,7 +10,7 @@ interface SkipsListProps {
   viewMode: 'grid' | 'list';
 }
 
-export const SkipsList: React.FC<SkipsListProps> = ({ skips, viewMode }) => {
+export const SkipsLayout: React.FC<SkipsListProps> = ({ skips, viewMode }) => {
   return (
     <ScrollArea className='mt-6 h-[calc(100vh-220px)]'>
       <div
