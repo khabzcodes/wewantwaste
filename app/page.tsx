@@ -8,7 +8,7 @@ import { SkipsList } from '@/components/skips/skips-list';
 import { SkipsProvider, useSkips } from '@/context/skips-context';
 
 const SkipsContent = () => {
-  const { filteredSkips } = useSkips();
+  const { filteredSkips, viewMode } = useSkips();
   return (
     <div className='mx-auto w-full max-w-6xl py-10'>
       <Stepper steps={stepsConfig} />
@@ -24,7 +24,7 @@ const SkipsContent = () => {
           <FilterSkips />
         </div>
       </div>
-      <SkipsList skips={filteredSkips} />
+      <SkipsList skips={filteredSkips} viewMode={viewMode} />
     </div>
   );
 };
