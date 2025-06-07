@@ -27,7 +27,7 @@ export const SkipSummaryDrawer = () => {
         <div className='flex flex-col gap-2 px-36 pb-10'>
           <div className='border-primary rounded-lg border p-4'>
             <div className='mb-4 flex items-center justify-between'>
-              <h3 className='text-lg font-semibold text-gray-900'>
+              <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
                 {selectedSkip?.size} Yard Skip
               </h3>
               <div className='text-primary text-xl font-bold'>
