@@ -1,6 +1,8 @@
+'use client';
 import { FilterType, ISkip } from '@/types/skips';
 import React from 'react';
-import { skipsData } from '@/config/skips';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { getSkipsAction } from '@/actions/skips';
 
 type ViewModeType = 'list' | 'grid';
 
@@ -36,6 +38,10 @@ const SkipsContext = React.createContext<SkipsContextType | undefined>(
 export const SkipsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const { data: skipsData } = useSuspenseQuery({
+    queryKey: ['skips'],
+    queryFn: async () => await getSkipsAction(),
+  });
   const [viewMode, setViewMode] = React.useState<ViewModeType>('grid');
   const [activeFilters, setActiveFilters] = React.useState<Set<FilterType>>(
     new Set(['all']),

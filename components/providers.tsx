@@ -1,4 +1,6 @@
+'use client';
 import { ThemeProvider } from '@/components/theme/provider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export default function RootProviders({
   children,
@@ -12,7 +14,9 @@ export default function RootProviders({
       enableSystem
       disableTransitionOnChange
     >
-      {children}
+      <QueryClientProvider client={new QueryClient()}>
+        {children}
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
