@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
 import RootProviders from '@/components/providers';
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} bg-background min-h-screen overflow-hidden antialiased`}
       >
+        <Analytics />
         <RootProviders>
           <div className='fixed top-4 right-4 z-50'>
             <ThemeToggler />
