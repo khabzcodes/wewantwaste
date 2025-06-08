@@ -8,7 +8,7 @@ A modern redesign of the "Choose Your Skip Size" page from [wewantwaste.co.uk](h
 
 This project completely reimagines the skip selection process of the original website. After entering a postcode (such as LE10 1SH) and selecting "garden waste" on the original site, users encounter a basic skip selection page that lacks visual appeal and modern UX patterns.
 
-Our redesigned interface transforms this critical selection phase with:
+My redesigned interface transforms this critical selection phase with:
 
 - **Visual-First Selection**: Clear visualization of different skip sizes and types
 - **Intuitive Filtering System**: Easy filtering by size, placement requirements, and compatibility
@@ -60,71 +60,65 @@ The redesign focuses on several key principles:
 
 5. **Information Architecture**: Critical details are organized in a consistent, scannable layout in both grid and list views
 
+## Focus
+
+This project emphasizes:
+
+- **Clean, Maintainable React Code**: The codebase is organized into clear, reusable components and hooks, following best practices for readability and scalability. TypeScript is used throughout for type safety and improved developer experience.
+- **Responsiveness**: Every component and layout is designed mobile-first, ensuring a seamless experience across all device sizes. Tailwind CSS utility classes and responsive design patterns are used extensively.
+- **UI/UX Improvements**: The redesign prioritizes user experience with intuitive navigation, accessible components (via shadcn/ui), and clear visual feedback. Filtering, selection, and step navigation are all optimized for clarity and ease of use, making the skip selection process fast and enjoyable.
+
 ## Folder Structure
 
-```bash
-app
-├── api
-│   ├── skips
-│   │   ├── route.ts
-│   │   └── [id]
-│   │       └── route.ts
-│   └── auth
-│       └── [...nextauth]
-├── components
-│   ├── ui
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   ├── checkbox.tsx
-│   │   ├── drawer.tsx
-│   │   ├── input.tsx
-│   │   ├── label.tsx
-│   │   ├── modal.tsx
-│   │   ├── radio.tsx
-│   │   ├── select.tsx
-│   │   └── spinner.tsx
-│   ├── layout
-│   │   ├── navbar.tsx
-│   │   └── footer.tsx
-│   ├── skips
-│   │   ├── skipCard.tsx
-│   │   └── skipFilter.tsx
-│   └── auth
-│       ├── signIn.tsx
-│       └── signUp.tsx
-├── hooks
-│   ├── useSkips.ts
-│   └── useAuth.ts
-├── lib
-│   ├── db.ts
-│   └── prisma.ts
-├── middleware
-│   └── auth.ts
-├── pages
-│   ├── _app.tsx
-│   ├── _document.tsx
-│   ├── api
-│   │   └── auth
-│   │       └── [...nextauth].ts
-│   ├── skips
-│   │   ├── index.tsx
-│   │   └── [id]
-│   │       └── index.tsx
-│   ├── auth
-│   │   ├── signIn.tsx
-│   │   └── signUp.tsx
-│   └── index.tsx
-├── public
-│   ├── images
-│   │   ├── logo.png
-│   │   └── favicon.ico
-│   └── og.png
-├── styles
-│   ├── globals.css
-│   └── tailwind.css
-└── utils
-    ├── constants.ts
-    └── helpers.ts
+```
+app/
+  favicon.ico
+  globals.css
+  layout.tsx
+  loading.tsx
+  page.tsx
+components/
+  empty-placeholder.tsx
+  icons.tsx
+  providers.tsx
+  skips/
+    selection-button.tsx
+    skip-card.tsx
+    skip-list-item.tsx
+    skip-summary-drawer.tsx
+    skips-layout.tsx
+    controls/
+      filter.tsx
+      view-mode.tsx
+  steps/
+    step-item.tsx
+    stepper.tsx
+  theme/
+    provider.tsx
+    togger.tsx
+  ui/
+    badge.tsx
+    button.tsx
+    card.tsx
+    command.tsx
+    dialog.tsx
+    drawer.tsx
+    popover.tsx
+    scroll-area.tsx
+    sheet.tsx
+    skeleton.tsx
+config/
+  menu.ts
+  skips.ts
+context/
+  skips-context.tsx
+hooks/
+  use-mobile.ts
+lib/
+  utils.ts
+types/
+  skips.ts
+  steps.ts
 ```
 
 ## Getting Started
