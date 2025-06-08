@@ -1,18 +1,20 @@
-# WeWantWaste
+# WeWantWaste Code Challenge
 
 ![WeWantWaste](./public/og.png)
 
-Redesigned of the "Choose Your Skip Size" page from [wewantwaste.co.uk](https://wewantwaste.co.uk/) with a completely fresh look and feel, while maintaining its original functionality.
+A modern redesign of the "Choose Your Skip Size" page from [wewantwaste.co.uk](https://wewantwaste.co.uk/), enhancing the skip selection experience with an intuitive, accessible, and visually appealing interface.
 
 ## Overview
 
-Our redesigned interface improves this critical selection phase with:
+This project completely reimagines the skip selection process of the original website. After entering a postcode (such as LE10 1SH) and selecting "garden waste" on the original site, users encounter a basic skip selection page that lacks visual appeal and modern UX patterns.
 
-- **Visual-first approach**: Clear skip visualization with relevant details
-- **Contextual filtering**: Easy filtering by skip size and placement requirements
-- **Responsive design**: Seamless experience across all devices
-- **Accessibility improvements**: Enhanced readability and navigation
-- **Multi-view options**: Flexible grid and list views for different user preferences
+Our redesigned interface transforms this critical selection phase with:
+
+- **Visual-First Selection**: Clear visualization of different skip sizes and types
+- **Intuitive Filtering System**: Easy filtering by size, placement requirements, and compatibility
+- **Dual View Options**: Toggle between grid and list views based on user preference
+- **Responsive Design**: Seamless experience across mobile, tablet, and desktop devices
+- **Accessible UI Components**: Built with accessibility in mind using shadcn/ui components
 
 ## Tech Stack
 
@@ -22,19 +24,27 @@ Our redesigned interface improves this critical selection phase with:
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) for utility-first styling and responsive design
 
 ### UI Components
-- **Component Library**: [shadcn/ui](https://ui.shadcn.com/) - Selected for its non-opinionated, accessible components that provide maximum customizability while maintaining consistent design patterns
-- **Icons**: [Lucide React](https://lucide.dev/) for consistent and beautiful iconography
+- **Component Library**: [shadcn/ui](https://ui.shadcn.com/) - Selected for its:
+  - Non-opinionated approach allowing high customization
+  - Accessible, reusable components built on Radix UI primitives
+  - Seamless integration with Tailwind CSS
+  - Component-first approach rather than traditional library imports
+- **Icons**: [Lucide React](https://lucide.dev/) for consistent iconography
 - **Theme Support**: [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode
 
 ### Data Management
 - **Server Actions**: Next.js server actions for data mutations
 - **State Management**: React Context API for application state
-- **Data Fetching**: [TanStack Query](https://tanstack.com/query/latest) for efficient data fetching, caching, and state management - chosen for its declarative approach and automatic background refetching capabilities
+- **Data Fetching**: [TanStack Query](https://tanstack.com/query/latest) for:
+  - Efficient data fetching with automatic caching
+  - Background data refreshing
+  - Loading and error state management
+  - Server-side rendering support
 
 ### UI/UX Enhancements
 - **Drawer Component**: [Vaul](https://vaul.emilkowal.ski/) for smooth, accessible drawer animations
 - **Step Navigation**: Custom stepper component for multi-step process
-- **Error Boundaries**: [react-error-boundary](https://github.com/bvaughn/react-error-boundary) for graceful error handling
+- **Error Handling**: [react-error-boundary](https://github.com/bvaughn/react-error-boundary) for graceful error handling
 
 ## Design Approach
 
